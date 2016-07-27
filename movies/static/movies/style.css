@@ -1,0 +1,341 @@
+* {
+  margin: 0;
+}
+
+/* BODY */
+body {
+  background-color: #111111;
+  min-width: 100em;
+
+}
+html, body {
+    height: 100%;
+}
+
+/* GENERAL TEXT SETTINGS */
+h1, h2 {
+  font-family: "Montserrat", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  color: #f1f1f1;
+  font-family: "Open Sans", sans-serif;
+
+}
+
+/* MAIN HEADER */
+#main-header {
+  background-color: #23272d;
+  box-shadow: black 0 10px 10px;
+}
+
+#site-title {  
+  color: #a9bdc7;
+  font-size: 7em;
+  text-align: center;
+  text-shadow: #c9e1ed 2px 1px;
+  padding: 0.5em 0 0.5em 0;
+}
+
+#menu {
+  background-color: #2d323a;
+}
+
+#buttons {
+  display: inline-block;
+  margin-left: 10%;
+}
+
+.menu-button {
+  display: inline-block;
+  text-align: center;
+  margin-left: -0.4em;
+}
+
+.menu-button h2 {
+  font-size: 1.4em;
+  padding: 1em;
+}
+
+.menu-button h2:hover {
+  background-color: #424955;
+  text-shadow: 1px 1px #0e0e0e;
+  border-left: 4px #738094 solid;
+}
+
+.menu-button:link {
+  color: #f1f1f1;
+}
+
+.menu-button:visited {
+  color: #f1f1f1;
+}
+
+.menu-button:hover {
+  color: #ff7400;
+}
+
+/* CONTENT CONTAINER */
+.content-container {
+  margin: auto;
+  margin-top: 3em;
+  padding: 5em 3em 5em 1em;
+  box-shadow: -0.5em 1em 1em black;
+  max-width: 80em;
+  max-height: 40em;
+  overflow: auto;
+  background-color: #232323;
+  border-radius: 0.8em;
+
+}
+
+/* MOVIE */
+.content-container article {
+  display: block;
+}
+
+/* MOVIE HEADER */
+.movie-info {
+  margin-bottom: 1em;
+  display: inline-block;
+  min-width: 50em;
+}
+
+.movie-title {
+  font-size: 2em;
+  color: #eaeaea;
+  padding: 0 0 0 1em;
+  display: inline-block;
+}
+
+.movie-release-year {
+  font-size: 0.5em;
+}
+
+.small-info {
+  display: inline;
+}
+
+.original-title {
+  font-size: 1.1em;
+  text-align: left;
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+
+.original-title-text {
+  font-size: 0.7em
+}
+
+.movie-runtime {
+  display: inline;
+  padding-left: 2em;
+}
+
+/* MOVIE CONTENTS */
+
+.movie-info-section {
+  float: left;
+  max-width: 50em;
+  min-width: 50em;
+  margin-left: 2em;
+}
+
+.poster-section {
+  float: right;
+}
+
+.movie-poster-img {
+  max-width: 380px;
+  padding: 0em;
+  border: 3px dashed #333333;
+}
+
+.movie-genres {
+  display: block;
+  position: relative;
+}
+
+.movie-genre {
+  display: inline;
+  padding: 0.2em;
+}
+
+.movie-genre a:link, .movie-genre a:visited {
+  color: #f2f2f2
+}
+
+.movie-genre a:hover {
+  color: #ff7400;
+}
+
+.external-links {
+  display: inline-block;
+  margin-top: 1em;
+}
+.external-links p {
+  display: inline;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.imdb-links {
+  display: block;
+}
+
+.rotten-links {
+  display: block;
+}
+.imdb-links img, .rotten-links img{
+  max-height: 1.2em;
+  margin-right: 1em;
+}
+.imdb-links *, .rotten-links * {
+  display: inline;
+}
+
+.movie-description {
+  margin-top: 4em;
+  min-height: 15em;
+  padding: 1em;
+  background-color: #333333;
+  overflow: auto;
+}
+
+/* FOOTER */
+#footer-bar {
+  background-color: #0e0e0e;
+  clear: both;
+  overflow: auto;
+  padding: 0.5em;
+  width: 98%;
+}
+
+#footer-content p {
+  display: inline-block;
+}
+
+.user {
+  text-weight: bold;
+}
+
+.user-link {
+  float: left;
+}
+
+.user-link:link {
+  color: white;
+
+}
+.user-link:visited {
+  color: white;
+}
+
+#about {
+  float: right;
+  margin-right: 2em;
+}
+#about a:link, #about a:visited {
+  color: #f2f2f2;
+}
+#about a:hover {
+  color: #79aec8;
+}
+
+.user-link, #about {
+  font-size: 0.8em;
+  font-family: "Montserrat", "Open Sans", sans-serif;
+}
+
+/* BY GENRE LIST */
+
+.genre-title {
+  color: #f2f2f2;
+  font-size: 2.5em;
+  text-align: center;
+  margin: 0 0 1em 0;
+  padding: 0 0 1em 0;
+  border-bottom: 4px solid #f2f2f2;
+}
+
+.genre-list {
+  min-height: 18.5em;
+  padding: 2em;
+  list-style-type: disc;
+  color: #555555;
+  margin-left: 3em;
+}
+
+
+.genre-item {
+  font-family: "Montserrat", "Opens Sans", sans-serif;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+.genre-item a:link, .genre-item a:visited{
+  color: #f2f2f2;
+}
+
+.genre-item a:hover {
+  color: #ff7400;
+}
+
+.genre-return-button {
+  font-family: "Montserrat", "Open Sans", sans-serif;
+  color: #f2f2f2;
+  clear: both;
+  border: 2px solid #333333;
+  background-color: #222222;
+  padding: 1em;
+  float: right;
+}
+.genre-return-button:hover {
+  color: #ff7400;
+  background-color: #333333;
+}
+
+
+/** FAKE SCROLL JS **/
+
+.scrollWrap{
+    overflow : hidden;
+    height   : 100%;
+    position : relative;
+    z-index  : 1;
+}
+.scrollContent{
+    height          : 100%;
+    width           : 100%;
+    padding         : 0 32px 0 0;
+    position        : relative;
+    right           : -18px;
+    overflow        : auto;
+    -moz-box-sizing : border-box;
+    box-sizing      : border-box;
+}
+
+.fakeScrollBar{
+    position            : absolute;
+    background          : rgba(255,255,255,.5);
+    width               : 9px;
+    border-radius       : 4px;
+    right               : -15px;
+    top                 : 0;
+    z-index             : 0;
+    cursor              : -moz-grab;
+    cursor              : -webkit-grab;
+}
+
+.fakeScroll:hover .fakeScrollBar.fakescroll-grabbed{
+    cursor     : -moz-grabbing;
+    cursor     : -webkit-grabbing;
+    background : #FFF;
+}
+
+body.fakescroll-grabbed{
+    cursor     : -moz-grabbing;
+    cursor     : -webkit-grabbing;
+}

@@ -1,0 +1,57 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Cine Ice</title>
+  <link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+  <link type="text/css" rel="stylesheet" href="{% static 'movies/style.css' %}">
+
+  <link rel="stylesheet" href="{% static 'movies/js/jquery.mCustomScrollbar.css' %}">
+  <script src="{% static 'movies/js/jquery.min.js' %}"></script>
+  <script src="{% static 'movies/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+
+</head>
+
+<body>
+  <div class="wrapper">
+    <header id="main-header">
+      <h1 id="site-title">Cine ICE</h1>
+
+      <nav id="menu">
+        <div id="buttons">
+          <a class="menu-button" href={% url 'movies:random' %}>
+            <h2 id="random">Aleatório</h2>
+          </a>
+          <a class="menu-button" href="{% url 'movies:genres_list' %}">
+            <h2 id="gender">Gênero</h2>
+          </a>
+        </div>
+      </nav>
+
+    </header>
+
+    <section class="content-container mCustomScrollbar"  >
+      {% block content %}
+      {% endblock %}
+    </section>
+
+
+    <div class="push"></div>
+    <footer id="footer-bar">
+      <div id="footer-content">
+        {% if user.is_authenticated %}
+          <a class="user-link" href="/admin">Bem vindo <span class="user">{{ user }}</span></a>
+        {% else %}
+          <p class="user-link">Bem vindo <span class="user">Anônimo</span></p>
+        {% endif %}
+        <p id="about">&copy; 2016 <a href="mailto:lfsando@gmail.com">Luiz Felipe Domingues</a> &middot Powered by Django</p>
+      </div>
+    </footer>
+  </div>
+
+</body>
+
+</html>

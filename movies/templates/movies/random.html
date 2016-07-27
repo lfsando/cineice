@@ -1,0 +1,43 @@
+{% extends 'movies/base.html' %}
+{% load staticfiles %}
+{% block content %}
+  <section>
+    <header class="movie-info">
+      <h2 class="movie-title">{{ movie.title }}<span class="movie-release-year"> ({{ movie.release_year }})</span></h2>
+      <div class="small-info">
+        <p class="original-title">{{ movie.original_title }}<span class="original-title-text"> (título original)</span></p>
+        <p class="movie-runtime">{{ movie.runtime }}min</p>
+      </div>
+    </header>
+    <section class="poster-section">
+      <a href="{{ movie.poster }}" >
+        <img class="movie-poster-img" src="{% static poster_name %}" />
+      </a>
+    </section>
+    <section class="movie-info-section">
+      <div class="movie-genres">
+        {% for genre in movie.genre %}
+          <p class="movie-genre"><a href="{% url 'movies:by_genre' genre=genre|lower %}">{{ genre }}</a></p>
+        {% endfor %}
+      </div>
+
+      <div class="external-links">
+        <div class="imdb-links">
+          <a href="{{ movie.imdb_link }}">
+            <img src="/static/movies/icons/imdb_icon.png" alt="Veja no IMDB"/>
+          </a>
+          <p>{{ movie.imdb_rating}}/10</p>
+        </div>
+
+        <div class="rotten-links">
+          <a href="{{ movie.rotten_tomatoes_link }}">
+            <img src="/static/movies/icons/rottentomatoes_logo.png" alt="Veja no Rotten Tomatoes" />
+          </a>
+          <p>{{ movie.rotten_tomatoes_rating }}%</p>
+        </div>
+      </div>
+
+      <p class="movie-description">{{ movie.description }}</p>
+    </section>
+  </section>
+{% endblock %}
