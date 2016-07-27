@@ -38,7 +38,7 @@ class Movie(models.Model):
     release_year = models.IntegerField(validators=
                                        [MinValueValidator(1800),
                                         MaxValueValidator(timezone.now().year)])
-    poster = models.ImageField(default='movies/images/no-img.png', upload_to='movies/static/movies/images')
+    poster = models.ImageField(default='movies/images/no-img.png', upload_to='static/movies/images')
 
     runtime = models.IntegerField(blank=True, validators=[MinValueValidator(0)])
     description = models.TextField()
