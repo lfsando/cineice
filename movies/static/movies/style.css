@@ -264,16 +264,17 @@ p {
 .genre-list {
   min-height: 18.5em;
   padding: 2em;
-  list-style-type: disc;
   color: #555555;
   margin-left: 3em;
 }
 
 
 .genre-item {
+  display: inline-block;
   font-family: "Montserrat", "Opens Sans", sans-serif;
   font-size: 1.2em;
   margin-bottom: 1em;
+  width: 10em;
 }
 .genre-item a:link, .genre-item a:visited{
   color: #f2f2f2;
