@@ -81,8 +81,7 @@ p {
 
 /* CONTENT CONTAINER */
 .content-container {
-  margin: auto;
-  margin-top: 3em;
+  margin: 3em auto auto auto;
   padding: 5em 3em 5em 1em;
   box-shadow: -0.5em 1em 1em black;
   max-width: 80em;
@@ -300,54 +299,65 @@ p {
 
 /** NEW MOVIE FORM**/
 
-.movie-forms {
-  margin-left: 5em;
+#movie-forms {
+  margin-left: 2em;
 }
 
-
-
-
-
-
-/** FAKE SCROLL JS **/
-
-.scrollWrap{
-    overflow : hidden;
-    height   : 100%;
-    position : relative;
-    z-index  : 1;
-}
-.scrollContent{
-    height          : 100%;
-    width           : 100%;
-    padding         : 0 32px 0 0;
-    position        : relative;
-    right           : -18px;
-    overflow        : auto;
-    -moz-box-sizing : border-box;
-    box-sizing      : border-box;
+#form-container {
+  padding: 2em;
 }
 
-.fakeScrollBar{
-    position            : absolute;
-    background          : rgba(255,255,255,.5);
-    width               : 9px;
-    border-radius       : 4px;
-    right               : -15px;
-    top                 : 0;
-    z-index             : 0;
-    cursor              : -moz-grab;
-    cursor              : -webkit-grab;
+.movie-form p input {
+  border: none;
+  font-size: 1.2em;
+  border-radius: 0.2em;
+}
+.movie-form p input:focus {
+  box-shadow: 0 0 0.3em #888888;
 }
 
-.fakeScroll:hover .fakeScrollBar.fakescroll-grabbed{
-    cursor     : -moz-grabbing;
-    cursor     : -webkit-grabbing;
-    background : #FFF;
+#movie-forms p label{
+  font-size: 1em;
+  padding: 1em 0 0.2em 0;
+  display:block;
 }
 
-body.fakescroll-grabbed{
-    cursor     : -moz-grabbing;
-    cursor     : -webkit-grabbing;
+#new-movie-title{
+  margin-bottom: 0.2em;
+  padding-bottom: 1em;
+  border-bottom: 4px solid #f2f2f2;
+  text-align: center;
+  color: #f2f2f2;
+  font-size: 2.5em;
+}
+
+#id_description {
+  min-width: 50em;
+  min-height: 15em;
+}
+
+#id_genre {
+  list-style: none;
+  color: #f2f2f2;
+  font-family: "Open Sans", sans-serif;
+  padding: 0;
+  max-width: 55em;
+}
+
+#id_genre li {
+  display: inline;
+}
+
+#id_genre li label {
+  display: inline-block;
+  padding-left: 1em;
+  cursor: cell;
+}
+
+#id_genre li input {
+  vertical-align: middle;
+}
+#id_genre li label:focus{
+  color: orange;
 }
 
