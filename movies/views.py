@@ -1,11 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
-from .models import GENRES
-
 from django.utils import timezone
 
+from .models import GENRES, Movie
+from .forms import AddMovie
 
 import random
-from movies.models import Movie
 
 
 def random_movie(request):
@@ -14,8 +13,8 @@ def random_movie(request):
     if count > 0:
         movie_ids = [movie.id for movie in Movie.objects.all()]
         movie = get_object_or_404(Movie, pk=random.choice(movie_ids))
-        movie_poster_name = "movies/images/" + str(movie.poster.__str__().split('/')[-1])
-        return render(request, 'movies/random.html', {'movie': movie, 'movie_poster': movie_poster_name})
+
+        return render(request, 'movies/random.html', {'movie': movie})
     else:
         return HttpResponse(content="No movies in db")
 
@@ -46,3 +45,7 @@ def genres(request):
         genres_list.append(GENRES[genre][1])
     return render(request, 'movies/genres_list.html', {'genres_list': genres_list})
 
+
+def add_movie(request):
+    form = AddMovie()
+    return render(request, 'movies/add_movie.html', {'form': form})

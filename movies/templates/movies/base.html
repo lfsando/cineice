@@ -8,11 +8,9 @@
   <title>Cine Ice</title>
   <link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
   <link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-  <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}">
 
-  <link rel="stylesheet" href="{% static 'movies/js/jquery.mCustomScrollbar.css' %}">
-  <script src="{% static 'movies/js/jquery.min.js' %}"></script>
-  <script src="{% static 'movies/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+  <link type="text/css" rel="stylesheet" href="{% static 'movies/css/style.css' %}">
+  <link type="text/css" rel="stylesheet" href="{% static 'movies/css/jquery.mCustomScrollbar.css' %}">
 
 </head>
 
@@ -28,6 +26,9 @@
           </a>
           <a class="menu-button" href="{% url 'movies:genres_list' %}">
             <h2 id="gender">Gênero</h2>
+          </a>
+          <a class="menu-button" href="{% url 'movies:add_movie' %}">
+            <h2 id="new_movie">Adicionar Filme</h2>
           </a>
         </div>
       </nav>

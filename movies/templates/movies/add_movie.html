@@ -1,0 +1,12 @@
+{% extends 'movies/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+  <section id="movie-forms">
+    <h2>New Movie</h2>
+    <form method="POST" class="movie-form">{% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="return-button">Save</button>
+    </form>
+  </section>
+{% endblock %}

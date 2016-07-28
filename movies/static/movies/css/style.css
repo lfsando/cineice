@@ -284,7 +284,7 @@ p {
   color: #ff7400;
 }
 
-.genre-return-button {
+.return-button {
   font-family: "Montserrat", "Open Sans", sans-serif;
   color: #f2f2f2;
   clear: both;
@@ -293,10 +293,20 @@ p {
   padding: 1em;
   float: right;
 }
-.genre-return-button:hover {
+.return-button:hover {
   color: #ff7400;
   background-color: #333333;
 }
+
+/** NEW MOVIE FORM**/
+
+.movie-forms {
+  margin-left: 5em;
+}
+
+
+
+
 
 
 /** FAKE SCROLL JS **/
@@ -340,3 +350,4 @@ body.fakescroll-grabbed{
     cursor     : -moz-grabbing;
     cursor     : -webkit-grabbing;
 }
+

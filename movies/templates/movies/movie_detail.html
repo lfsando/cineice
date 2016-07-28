@@ -3,9 +3,7 @@
 {% block content %}
   <section>
     <header class="movie-info">
-      <a href="{% url 'movies:movie_detail' movie_pk=movie.pk %}">
-        <h2 class="movie-title">{{ movie.title }}<span class="movie-release-year"> ({{ movie.release_year }})</span></h2>
-      </a>
+      <h2 class="movie-title">{{ movie.title }}<span class="movie-release-year"> ({{ movie.release_year }})</span></h2>
       <div class="small-info">
         <p class="original-title">{{ movie.original_title }}<span class="original-title-text"> (título original)</span></p>
         <p class="movie-runtime">{{ movie.runtime }}min</p>
