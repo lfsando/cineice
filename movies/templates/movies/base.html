@@ -20,16 +20,25 @@
       <h1 id="site-title">Cine ICE</h1>
 
       <nav id="menu">
-        <div id="buttons">
+        <div id="buttons-left">
           <a class="menu-button" href={% url 'movies:random' %}>
             <h2 id="random">Aleatório</h2>
           </a>
           <a class="menu-button" href="{% url 'movies:genres_list' %}">
             <h2 id="gender">Gênero</h2>
           </a>
-          <a class="menu-button" href="{% url 'movies:add_movie' %}">
+
+        </div>
+        <div id="buttons-right">
+          {% if user.is_authenticated %}
+          <a class="menu-button"  href="{% url 'movies:add_movie' %}">
             <h2 id="new_movie">Adicionar Filme</h2>
           </a>
+          <a class="menu-button" href="">
+            <h2 id="menu-login">Login</h2>
+          </a>
+          {% endif %}
+
         </div>
       </nav>
 

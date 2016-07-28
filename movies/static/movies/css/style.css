@@ -43,11 +43,19 @@ p {
 
 #menu {
   background-color: #2d323a;
+  overflow: auto;
 }
 
-#buttons {
+#buttons-left {
   display: inline-block;
+  float: left;
   margin-left: 10%;
+}
+
+#buttons-right {
+  display: inline-block;
+  float: right;
+  margin-right: 10%
 }
 
 .menu-button {
@@ -64,7 +72,8 @@ p {
 .menu-button h2:hover {
   background-color: #424955;
   text-shadow: 1px 1px #0e0e0e;
-  border-left: 4px #738094 solid;
+  box-shadow: 0.2em 0.2em 1em black;
+  padding: 1.1em;
 }
 
 .menu-button:link {
@@ -151,7 +160,6 @@ p {
 .movie-poster-img {
   max-width: 380px;
   padding: 0em;
-  border: 3px dashed #333333;
 }
 
 .movie-genres {
