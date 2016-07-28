@@ -20,6 +20,11 @@ def random_movie(request):
         return HttpResponse(content="No movies in db")
 
 
+def movie_detail(request, movie_pk):
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    return render(request, 'movies/movie_detail.html', {'movie':movie})
+
+
 def by_genre(request, genre):
     movie_list = []
 
@@ -40,3 +45,4 @@ def genres(request):
     for genre in range(len(GENRES)):
         genres_list.append(GENRES[genre][1])
     return render(request, 'movies/genres_list.html', {'genres_list': genres_list})
+
