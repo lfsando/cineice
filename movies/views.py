@@ -12,9 +12,10 @@ def random_movie(request):
     count = Movie.objects.all().count()
 
     if count > 0:
-        random_movie = get_object_or_404(Movie, pk=random.randint(1, count))
-        movie_poster_name = "movies/images/" + str(random_movie.poster.__str__().split('/')[-1])
-        return render(request, 'movies/random.html', {'movie': random_movie, 'poster_name': movie_poster_name})
+        movie_ids = [movie.id for movie in Movie.objects.all()]
+        movie = get_object_or_404(Movie, pk=random.choice(movie_ids))
+        movie_poster_name = "movies/images/" + str(movie.poster.__str__().split('/')[-1])
+        return render(request, 'movies/random.html', {'movie': movie, 'movie_poster': movie_poster_name})
     else:
         return HttpResponse(content="No movies in db")
 

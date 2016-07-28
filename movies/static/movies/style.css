@@ -256,7 +256,7 @@ p {
   color: #f2f2f2;
   font-size: 2.5em;
   text-align: center;
-  margin: 0 0 1em 0;
+  margin: auto;
   padding: 0 0 1em 0;
   border-bottom: 4px solid #f2f2f2;
 }
@@ -265,9 +265,8 @@ p {
   min-height: 18.5em;
   padding: 2em;
   color: #555555;
-  margin-left: 3em;
+  margin: auto;
 }
-
 
 .genre-item {
   display: inline-block;
@@ -276,6 +275,7 @@ p {
   margin-bottom: 1em;
   width: 10em;
 }
+
 .genre-item a:link, .genre-item a:visited{
   color: #f2f2f2;
 }

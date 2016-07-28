@@ -1,9 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from django.core.validators import MinValueValidator, MaxValueValidator
-
+from cineice import settings
 from multiselectfield import MultiSelectField
-
 
 GENRES = [
     ("Action", "Action"),
@@ -31,21 +30,20 @@ GENRES = [
 
 
 class Movie(models.Model):
-
     # Movie info
     title = models.CharField(max_length=200)
     original_title = models.CharField(max_length=200)
     release_year = models.IntegerField(validators=
                                        [MinValueValidator(1800),
                                         MaxValueValidator(timezone.now().year)])
-    poster = models.ImageField(default='movies/images/no-img.png', upload_to='static/movies/images')
+    poster = models.ImageField(blank=True, upload_to='posters')
 
     runtime = models.IntegerField(blank=True, validators=[MinValueValidator(0)])
     description = models.TextField()
     genre = MultiSelectField(choices=GENRES, max_choices=4)
 
-    #External Info
-    imdb_link = models.CharField(max_length=50, default="https://www.imdb.com/")
+    # External Info
+    imdb_link = models.CharField(max_length=50, default="http://www.imdb.com/search/title")
     imdb_rating = models.DecimalField(
         default=0,
         validators=[
@@ -55,7 +53,7 @@ class Movie(models.Model):
         decimal_places=1,
         max_digits=3,
     )
-    rotten_tomatoes_link = models.CharField(max_length=100, default="https://www.rottentomatoes.com/")
+    rotten_tomatoes_link = models.CharField(max_length=100, default="https://www.rottentomatoes.com/search/?search=")
     rotten_tomatoes_rating = models.IntegerField(
         default=0,
         validators=[
@@ -63,6 +61,7 @@ class Movie(models.Model):
             MaxValueValidator(100),
         ],
     )
+
     # User info
     author = models.ForeignKey('auth.User')
     pub_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
