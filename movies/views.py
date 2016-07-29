@@ -50,7 +50,7 @@ def genres(request):
     return render(request, 'movies/genres_list.html', {'genres_list': genres_list})
 
 
-def add_movie(request):
+def movie_new(request):
     if request.method == "POST":
         form = MovieForm(request.POST)
         if form.is_valid():
@@ -62,4 +62,20 @@ def add_movie(request):
             return redirect('movies:movie_detail', movie_pk=movie.pk)
     else:
         form = MovieForm()
-    return render(request, 'movies/add_movie.html', {'form': form})
+    return render(request, 'movies/movie_edit.html', {'form': form})
+
+
+def movie_edit(request, movie_pk):
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    if request.method == 'POST':
+        form = MovieForm(request.POST, instance=movie)
+        if form.is_valid():
+            movie = form.save(commit=False)
+            movie.author = request.user
+            movie.pub_date = timezone.now()
+            movie.save()
+            return redirect('movie_detail', movie_pk=movie.pk)
+    else:
+        form = MovieForm(instance=post)
+    return render(request, 'movies/movie_edit.html', {'form': form})
+
