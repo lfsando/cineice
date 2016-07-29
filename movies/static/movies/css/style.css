@@ -37,7 +37,6 @@ p {
   color: #a9bdc7;
   font-size: 7em;
   text-align: center;
-  text-shadow: #c9e1ed 2px 1px;
   padding: 0.5em 0 0.5em 0;
 }
 
@@ -65,7 +64,7 @@ p {
 }
 
 .menu-button h2 {
-  font-size: 1.3em;
+  font-size: 1.1em;
   padding: 1em;
 }
 
