@@ -1,17 +1,18 @@
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from django.utils import timezone
-
+from django.http import Http404
 from .models import GENRES, Movie
 from .forms import MovieForm
 
-import random, datetime
+import random
+import datetime
 
 
 def random_movie(request):
     count = Movie.objects.all().count()
 
     if count > 0:
-        movie_ids = [movie.id for movie in Movie.objects.all()]
+        movie_ids = [movie.id for movie in Movie.objects.all() if movie.publish]
         movie = get_object_or_404(Movie, pk=random.choice(movie_ids))
 
         return render(request, 'movies/random.html', {'movie': movie})
@@ -21,7 +22,10 @@ def random_movie(request):
 
 def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
-    return render(request, 'movies/movie_detail.html', {'movie':movie})
+    if movie.publish:
+        return render(request, 'movies/movie_detail.html', {'movie': movie})
+    else:
+        raise Http404
 
 
 def by_genre(request, genre):
@@ -52,7 +56,8 @@ def add_movie(request):
         if form.is_valid():
             movie = form.save(commit=False)
             movie.author = request.user
-            movie.pub_date = timezone.now() + datetime.timedelta(days=30)
+            movie.pub_date = timezone.now()
+            movie.publish = False
             movie.save()
             return redirect('movies:movie_detail', movie_pk=movie.pk)
     else:

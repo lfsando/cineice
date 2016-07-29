@@ -62,7 +62,8 @@ class Movie(models.Model):
         ],
     )
 
-    # User info
+    # Other infos
+    publish = models.BooleanField(default=True)
     author = models.ForeignKey('auth.User')
     pub_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     user_rating = 0

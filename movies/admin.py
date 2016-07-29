@@ -12,7 +12,7 @@ class MovieAdmin(admin.ModelAdmin):
         ('External links and information',  {'fields': ['imdb_link', 'imdb_rating',
                                                         'rotten_tomatoes_link', 'rotten_tomatoes_rating']}),
 
-        ('User information',                {'fields': ['author', 'pub_date']}),
+        ('Other informations',                {'fields': ['author', 'pub_date', 'publish']}),
     ]
     list_display = ('title', 'release_year', 'author',)
     list_filter = ('release_year',)

@@ -65,7 +65,7 @@ p {
 }
 
 .menu-button h2 {
-  font-size: 1.4em;
+  font-size: 1.3em;
   padding: 1em;
 }
 
@@ -314,6 +314,10 @@ p {
   padding: 2em;
 }
 
+.movie-form {
+  display: inline-block;
+}
+
 .movie-form p input {
   border: none;
   font-size: 1.2em;
@@ -324,7 +328,7 @@ p {
 }
 
 #movie-forms p label{
-  font-size: 1em;
+  font-size: 0.9em;
   padding: 1em 0 0.2em 0;
   display:block;
 }
@@ -339,8 +343,8 @@ p {
 }
 
 #id_description {
-  min-width: 50em;
-  min-height: 15em;
+  width: 50em;
+  height: 15em;
 }
 
 #id_genre {
@@ -361,10 +365,25 @@ p {
   cursor: cell;
 }
 
-#id_genre li input {
-  vertical-align: middle;
-}
-#id_genre li label:focus{
-  color: orange;
+#id_genre li label:hover {
+  color: #ff7400;
 }
 
+
+.errorlist {
+  color: #cc3434;
+  display: inline-block;
+  list-style-type: circle;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+  float: right;
+  margin: 1em 35em 0em 0em;
+}
+
+.errorlist + p input{
+  background-color: #ff9f9b;
+}
+
+.errorlist + p input:focus {
+  background-color: white;
+}
