@@ -387,3 +387,13 @@ p {
 .errorlist + p input:focus {
   background-color: white;
 }
+
+.errormessage {
+  text-align: center;
+  color: #f2f2f2;
+  white-space: pre;
+}
+.errormessage:before {
+  content: 'Sorry :(\A\A';
+
+}

@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% block content %}
   <section>
+    {% if user.is_superuser and not movie.publish or movie.publish %}
     <header class="movie-info">
       <h2 class="movie-title">{{ movie.title }}<span class="movie-release-year"> ({{ movie.release_year }})</span></h2>
       <div class="small-info">
@@ -38,6 +39,9 @@
       </div>
 
       <p class="movie-description">{{ movie.description }}</p>
+    {% else %}
+      <h2 class="errormessage">This movie has not been published yet.</h2>
+    {% endif %}
     </section>
   </section>
 {% endblock %}

@@ -25,10 +25,7 @@ class RandomView(generic.DetailView):
 
 def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
-    if movie.publish:
-        return render(request, 'movies/movie_detail.html', {'movie': movie})
-    else:
-        raise Http404
+    return render(request, 'movies/movie_detail.html', {'movie': movie})
 
 
 def by_genre(request, genre):
