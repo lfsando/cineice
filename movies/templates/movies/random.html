@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% block content %}
   <section>
+    {% if movie %}
     <header class="movie-info">
       <a href="{% url 'movies:movie_detail' movie_pk=movie.pk %}">
         <h2 class="movie-title">{{ movie.title }}<span class="movie-release-year"> ({{ movie.release_year }})</span></h2>
@@ -42,5 +43,8 @@
 
       <p class="movie-description">{{ movie.description }}</p>
     </section>
+    {% else %}
+      <p>No movies are available.</p>
+    {% endif %}
   </section>
 {% endblock %}

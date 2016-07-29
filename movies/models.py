@@ -68,6 +68,9 @@ class Movie(models.Model):
     pub_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     user_rating = 0
 
+    def publish_movie(self):
+        self.publish = True
+
     def __str__(self):
         return self.title
 

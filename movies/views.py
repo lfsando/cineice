@@ -1,23 +1,26 @@
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from django.utils import timezone
 from django.http import Http404
+from django.views import generic
+
 from .models import GENRES, Movie
 from .forms import MovieForm
-
 import random
 import datetime
 
 
-def random_movie(request):
-    count = Movie.objects.all().count()
+class RandomView(generic.DetailView):
+    template_name = 'movies/random.html'
 
-    if count > 0:
-        movie_ids = [movie.id for movie in Movie.objects.all() if movie.publish]
-        movie = get_object_or_404(Movie, pk=random.choice(movie_ids))
+    def get_object(self):
+        movies = Movie.objects.all()
+        movies.exclude(publish=False)
+        count = movies.count()
 
-        return render(request, 'movies/random.html', {'movie': movie})
-    else:
-        return HttpResponse(content="No movies in db")
+        if count > 0:
+            movie_ids = [movie.id for movie in movies if movie.publish]
+            movie = get_object_or_404(Movie, pk=random.choice(movie_ids))
+            return movie
 
 
 def movie_detail(request, movie_pk):
