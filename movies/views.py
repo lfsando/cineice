@@ -2,9 +2,9 @@ from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from django.utils import timezone
 
 from .models import GENRES, Movie
-from .forms import AddMovie
+from .forms import MovieForm
 
-import random
+import random, datetime
 
 
 def random_movie(request):
@@ -47,5 +47,14 @@ def genres(request):
 
 
 def add_movie(request):
-    form = AddMovie()
+    if request.method == "POST":
+        form = MovieForm(request.POST)
+        if form.is_valid():
+            movie = form.save(commit=False)
+            movie.author = request.user
+            movie.pub_date = timezone.now() + datetime.timedelta(days=30)
+            movie.save()
+            return redirect('movies:movie_detail', movie_pk=movie.pk)
+    else:
+        form = MovieForm()
     return render(request, 'movies/add_movie.html', {'form': form})
