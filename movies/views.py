@@ -24,8 +24,7 @@ class RandomView(generic.DetailView):
 
 
 def movies_list(request):
-    movies = Movie.objects.all().order_by('title')
-    movies.exclude(publish=False)
+    movies = Movie.objects.filter(publish=True).order_by('title')
     return render(request, 'movies/movie_list.html', {'movies': movies})
 
 
