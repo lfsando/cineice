@@ -40,7 +40,7 @@ def by_genre(request, genre):
         movie_list.sort(key=lambda x: x.title)
         return render(request, 'movies/by_genre.html', {'movie_list': movie_list, 'genre': genre})
     else:
-        return HttpResponse(content="No movies in {} genre".format(genre), status=404 )
+        return HttpResponse(content="No movies in {} genre".format(genre), status=404)
 
 
 def genres(request):
@@ -74,8 +74,8 @@ def movie_edit(request, movie_pk):
             movie.author = request.user
             movie.pub_date = timezone.now()
             movie.save()
-            return redirect('movie_detail', movie_pk=movie.pk)
+            return redirect('movies:movie_detail', movie_pk=movie.pk)
     else:
-        form = MovieForm(instance=post)
+        form = MovieForm(instance=movie)
     return render(request, 'movies/movie_edit.html', {'form': form})
 

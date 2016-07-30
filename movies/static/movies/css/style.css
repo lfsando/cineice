@@ -71,7 +71,6 @@ p {
 .menu-button h2:hover {
   background-color: #424955;
   text-shadow: 1px 1px #0e0e0e;
-  padding: 1.1em;
 }
 
 .menu-button:link {
@@ -319,7 +318,7 @@ p {
 
 .movie-form p input {
   border: none;
-  font-size: 1.2em;
+  font-size: 1em;
   border-radius: 0.2em;
 }
 .movie-form p input:focus {
@@ -339,6 +338,9 @@ p {
   text-align: center;
   color: #f2f2f2;
   font-size: 2.5em;
+}
+#id_runtime {
+  content: "(em min)"
 }
 
 #id_description {
@@ -368,7 +370,6 @@ p {
   color: #ff7400;
 }
 
-
 .errorlist {
   color: #cc3434;
   display: inline-block;
@@ -395,4 +396,18 @@ p {
 .errormessage:before {
   content: 'Sorry :(\A\A';
 
+}
+
+#movie-edit-btn {
+  margin-top: 3em;
+}
+
+#movie-edit-btn a:link, #movie-edit-btn a:visited {
+  color: #f2f2f2;
+  font-size: 0.8em;
+}
+
+#movie-edit-btn:hover > a{
+  color: #ff7400;
+  text-shadow: 1px 1px 1px black;
 }

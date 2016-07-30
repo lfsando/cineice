@@ -37,14 +37,17 @@
           <p>{{ movie.rotten_tomatoes_rating }}%</p>
         </div>
       </div>
-      {% if user.is_superuser %}
-      <div class="return-button">
-        <a href="{% url 'movies:movie_edit' movie_pk=movie.pk %}">Editar filme</a>
-      </div>
-      {% endif %}
+
+
+
       <p class="movie-description">{{ movie.description }}</p>
     {% else %}
-      <h2 class="errormessage">This movie has not been published yet.</h2>
+      <h2 class="errormessage">Este filme não foi publicado ainda.</h2>
+    {% endif %}
+    {% if user.is_superuser %}
+      <div class="return-button" id="movie-edit-btn">
+        <a href="{% url 'movies:movie_edit' movie_pk=movie.pk %}">Editar filme</a>
+      </div>
     {% endif %}
     </section>
   </section>
