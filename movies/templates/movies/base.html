@@ -20,6 +20,9 @@
 
       <nav id="menu">
         <div id="buttons-left">
+          <a class="menu-button" href="{% url 'movies:movies_list' %}">
+            <h2 id="movies-list-button">Filmes</h2>
+          </a>
           <a class="menu-button" href={% url 'movies:random' %}>
             <h2 id="random">Aleatório</h2>
           </a>

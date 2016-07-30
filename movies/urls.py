@@ -9,6 +9,7 @@ app_name = 'movies'
 
 urlpatterns = [
     url(r'^$', views.RandomView.as_view(), name='random'),
+    url(r'^filmes/$', views.movies_list, name='movies_list'),
     url(r'^filmes/generos/(?P<genre>[-\w]+)/$', views.by_genre, name='by_genre'),
     url(r'^filmes/generos/$', views.genres, name='genres_list'),
     url(r'^filmes/(?P<movie_pk>\d+)/$', views.movie_detail, name='movie_detail'),

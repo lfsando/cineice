@@ -23,6 +23,12 @@ class RandomView(generic.DetailView):
             return movie
 
 
+def movies_list(request):
+    movies = Movie.objects.all().order_by('title')
+    movies.exclude(publish=False)
+    return render(request, 'movies/movie_list.html', {'movies': movies})
+
+
 def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
     return render(request, 'movies/movie_detail.html', {'movie': movie})

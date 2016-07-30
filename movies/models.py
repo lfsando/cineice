@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.core.validators import MinValueValidator, MaxValueValidator
 from cineice import settings
+import os
 from multiselectfield import MultiSelectField
 
 GENRES = [
@@ -36,16 +37,16 @@ class Movie(models.Model):
     release_year = models.IntegerField(validators=
                                        [MinValueValidator(1800),
                                         MaxValueValidator(timezone.now().year)])
-    poster = models.ImageField(blank=True, upload_to='posters', default='/movies/static/movies/poster_not_available.jpg')
+    poster = models.ImageField(blank=True, upload_to='posters',
+                               default='poster_not_available.jpg')
 
-    runtime = models.IntegerField(blank=True, validators=[MinValueValidator(0)])
+    runtime = models.IntegerField(validators=[MinValueValidator(0)])
     description = models.TextField()
     genre = MultiSelectField(choices=GENRES, max_choices=4)
 
     # External Info
-    imdb_link = models.CharField(max_length=50, default="http://www.imdb.com/search/title")
+    imdb_link = models.CharField(max_length=50)
     imdb_rating = models.DecimalField(
-        default=0,
         validators=[
             MinValueValidator(0),
             MaxValueValidator(10),
@@ -53,9 +54,8 @@ class Movie(models.Model):
         decimal_places=1,
         max_digits=3,
     )
-    rotten_tomatoes_link = models.CharField(max_length=100, default="https://www.rottentomatoes.com/search/?search=")
+    rotten_tomatoes_link = models.CharField(max_length=100)
     rotten_tomatoes_rating = models.IntegerField(
-        default=0,
         validators=[
             MinValueValidator(0),
             MaxValueValidator(100),
