@@ -7,6 +7,8 @@ from .models import GENRES, Movie
 from .forms import MovieForm
 import random
 import datetime
+from string import digits, ascii_uppercase
+from collections import OrderedDict
 
 
 class RandomView(generic.DetailView):
@@ -25,17 +27,53 @@ class RandomView(generic.DetailView):
 
 def movies_list(request):
     movies = Movie.objects.filter(publish=True).order_by('title')
-    return render(request, 'movies/movie_list.html', {'movies': movies})
+    letters = '#' + ascii_uppercase
+    alpha_order = [[letter, []] for letter in letters]
+
+    for movie in movies:
+        first_letter = movie.title[0]
+        if first_letter in list(digits):
+            alpha_order[0][1].append(movie)
+        else:
+            for letter in range(len(alpha_order)):
+                if first_letter.upper() == alpha_order[letter][0]:
+                    alpha_order[letter][1].append(movie)
+
+    return render(request, 'movies/movie_list.html', {'movies': movies, 'movie_index': alpha_order})
 
 
 def movie_detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
-    return render(request, 'movies/movie_detail.html', {'movie': movie})
+    genres_list = movie.genre
+    movie_genres = []
+    for url, name in GENRES:
+        for genre in genres_list:
+            if genre == url:
+                movie_genres.append([name, url])
+
+    return render(request, 'movies/movie_detail.html', {'movie': movie, 'genres': movie_genres})
+
+
+def publish_movie(request, movie_pk):
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    if not movie.publish:
+        movie.publish = True
+        movie.save()
+        message = "O filme {} foi publicado com sucesso".format(movie.title)
+        return render(request, 'movies/publish.html', {'movie': movie, 'message': message})
+    else:
+        movie.publish = False
+        movie.save()
+        message = "O filme {} foi omitido com sucesso".format(movie.title)
+        return render(request, 'movies/publish.html', {'movie': movie, 'message': message})
 
 
 def by_genre(request, genre):
-    movie_list = []
+    for name, url in GENRES:
+        if url == genre:
+            genre_title = name
 
+    movie_list = []
     for movie in Movie.objects.all():
         for movie_genre in movie.genre:
             if movie_genre.lower() == genre.lower():
@@ -43,15 +81,13 @@ def by_genre(request, genre):
                 movie_list.append(get_object_or_404(Movie, pk=pk))
     if movie_list:
         movie_list.sort(key=lambda x: x.title)
-        return render(request, 'movies/by_genre.html', {'movie_list': movie_list, 'genre': genre})
+        return render(request, 'movies/by_genre.html', {'movie_list': movie_list, 'genre': genre_title})
     else:
         return HttpResponse(content="No movies in {} genre".format(genre), status=404)
 
 
 def genres(request):
-    genres_list = []
-    for genre in range(len(GENRES)):
-        genres_list.append(GENRES[genre][1])
+    genres_list = OrderedDict(GENRES)
     return render(request, 'movies/genres_list.html', {'genres_list': genres_list})
 
 

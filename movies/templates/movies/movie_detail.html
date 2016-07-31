@@ -17,8 +17,8 @@
     </section>
     <section class="movie-info-section">
       <div class="movie-genres">
-        {% for genre in movie.genre %}
-          <p class="movie-genre"><a href="{% url 'movies:by_genre' genre=genre|lower %}">{{ genre }}</a></p>
+        {% for name, url in genres %}
+          <p class="movie-genre"><a href="{% url 'movies:by_genre' genre=url|lower %}">{{ name|capfirst }}</a></p>
         {% endfor %}
       </div>
 
@@ -38,20 +38,28 @@
         </div>
       </div>
 
-
-
       <p class="movie-description">{{ movie.description }}</p>
     {% else %}
       <h2 class="errormessage">Este filme não foi publicado ainda.</h2>
     {% endif %}
     {% if user.is_superuser %}
       <div id="detail-buttons">
-      <!--<div class="return-button">
-        <a href="{% url 'movies:erase_movie' movie_pk=movie.pk %}">Erase</a>
-      </div>-->
-      <div class="return-button" id="movie-edit-btn">
-        <a href="{% url 'movies:movie_edit' movie_pk=movie.pk %}">Editar filme</a>
-      </div>
+        <div class="context-btn movie-edit-btn">
+          <a href="{% url 'movies:movie_edit' movie_pk=movie.pk %}">Editar filme</a>
+        </div>
+        {% if movie.publish %}
+          <div class="context-btn movie-edit-btn">
+            <a href="{% url 'movies:publish_movie' movie_pk=movie.pk%}">
+              Esconder
+            </a>
+          </div>
+        {% else %}
+          <div class="context-btn movie-edit-btn">
+            <a href="{% url 'movies:publish_movie' movie_pk=movie.pk %}">
+              Publicar
+            </a>
+          </div>
+        {% endif %}
       </div>
     {% endif %}
     </section>

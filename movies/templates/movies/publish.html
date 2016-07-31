@@ -1,0 +1,8 @@
+{% extends 'movies/base.html' %}
+{% block content %}
+
+  <h2 class="message">{{ message }}</h2>
+  <div class="context-btn">
+    <a href="{% url 'movies:movie_detail' movie_pk=movie.pk %}">Voltar para detalhes</a>
+  </div>
+{% endblock %}

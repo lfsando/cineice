@@ -1,9 +1,27 @@
 {% extends 'movies/base.html' %}
 
 {% block content %}
-  {% for movie in movies %}
-    <a href="{% url 'movies:movie_detail' movie_pk=movie.pk %}">
-      <h2>{{ movie.title }}</h2>
-    </a>
-  {% endfor %}
+  <section id="movie-list">
+    <ul>
+    {% for index in movie_index %}
+      {% if index.1 %}
+        <li>
+          <div class="letter-wrapper">
+            <h2>{{ index.0 }}</h2>
+            {% for movie in index.1 %}
+              <ul>
+                <li>
+                  <a href="{% url 'movies:movie_detail' movie_pk=movie.pk %}">
+                    <h3>{{ movie|capfirst }}</h3>
+                  </a>
+                </li>
+              </ul>
+            {% endfor %}
+          </div>
+        </li>
+      {% endif %}
+    {% endfor %}
+    </li>
+    </ul>
+  </section>
 {% endblock %}

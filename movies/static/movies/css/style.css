@@ -6,10 +6,19 @@
 body {
   background-color: #111111;
   min-width: 100em;
-
 }
 html, body {
     height: 100%;
+}
+/* PUSH THE FOOTER TO BOTTOM */
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -2em;
+}
+.footer, .push {
+  height: 2em;
 }
 
 /* GENERAL TEXT SETTINGS */
@@ -156,7 +165,7 @@ p {
 
 .movie-poster-img {
   max-width: 380px;
-  padding: 0em;
+  padding: 0;
 }
 
 .movie-genres {
@@ -223,7 +232,7 @@ p {
 }
 
 .user {
-  text-weight: bold;
+  font-weight: bold;
 }
 
 .user-link {
@@ -266,7 +275,6 @@ p {
 }
 
 .genre-list {
-  min-height: 18.5em;
   padding: 2em;
   color: #555555;
   margin: auto;
@@ -288,18 +296,19 @@ p {
   color: #ff7400;
 }
 
-.return-button {
+.context-btn {
   font-family: "Montserrat", "Open Sans", sans-serif;
   color: #f2f2f2;
-  clear: both;
   border: 2px solid #333333;
   background-color: #222222;
   padding: 1em;
   float: right;
 }
-.return-button:hover {
-  color: #ff7400;
+.context-btn:hover {
   background-color: #333333;
+}
+.context-btn:hover > a{
+  color: #ff7400;
 }
 
 /** NEW MOVIE FORM**/
@@ -353,7 +362,9 @@ p {
   color: #f2f2f2;
   font-family: "Open Sans", sans-serif;
   padding: 0;
-  max-width: 55em;
+  columns: 7;
+  -webkit-columns: 7;
+  -moz-columns: 7;
 }
 
 #id_genre li {
@@ -377,7 +388,7 @@ p {
   font-weight: bold;
   font-family: "Montserrat", sans-serif;
   float: right;
-  margin: 1em 35em 0em 0em;
+  margin: 1em 35em 0 0;
 }
 
 .errorlist + p input{
@@ -398,16 +409,67 @@ p {
 
 }
 
-#movie-edit-btn {
-  margin-top: 3em;
+#detail-buttons {
+  float: left;
 }
-
-#movie-edit-btn a:link, #movie-edit-btn a:visited {
+.movie-edit-btn {
+  margin: 3em 0 0 1em;
+  display: inline;
+}
+.movie-edit-btn a:link, #movie-edit-btn a:visited {
   color: #f2f2f2;
   font-size: 0.8em;
 }
 
-#movie-edit-btn:hover > a{
+.movie-edit-btn:hover > a{
   color: #ff7400;
   text-shadow: 1px 1px 1px black;
+}
+
+
+
+/* MOVIE LIST */
+#movie-list {
+  display: inline-block;
+  width: 100%;
+}
+
+#movie-list ul {
+  list-style-type: none;
+}
+
+.letter-wrapper {
+  color: #f2f2f2;
+  padding: 1em;
+  font-size: 0.8em
+}
+.letter-wrapper ul {
+  columns: 4;
+  -webkit-columns: 4;
+  -moz-columns: 4;
+}
+.letter-wrapper h2 {
+  text-align: center;
+  padding: 1em;
+  border-bottom: 2px solid white;
+  margin-bottom: 1em;
+}
+
+.letter-wrapper a:link {
+  color: #f2f2f2;
+}
+
+.letter-wrapper a:visited {
+  color: #79aec8;
+}
+
+.letter-wrapper a:hover {
+  color: #ff7400;
+}
+
+/* PUBLISHED PAGE */
+.message {
+  text-align: center;
+  padding: 1em;
+  color: #f2f2f2;
 }

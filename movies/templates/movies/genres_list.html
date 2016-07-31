@@ -4,8 +4,8 @@
     <h2 class="genre-title">Gêneros</h2>
     <section class="content-list">
       <ul class="genre-list">
-        {% for genre in genres_list %}
-          <li class="genre-item"><a href="{% url 'movies:by_genre' genre=genre|lower %}" >{{ genre }}</a></li>
+        {% for url, genre in genres_list.items %}
+          <li class="genre-item"><a href="{% url 'movies:by_genre' genre=url|lower %}" >{{ genre }}</a></li>
         {% endfor %}
       </ul>
     </section>

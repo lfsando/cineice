@@ -6,27 +6,27 @@ import os
 from multiselectfield import MultiSelectField
 
 GENRES = [
-    ("Ação", "Ação"),
-    ("Aventura", "Aventura"),
-    ("Animação", "Animação"),
-    ("Biográfico", "Biográfico"),
-    ("Clássicos", "Classicos"),
-    ("Comédia", "Comédia"),
-    ("Crime", "Crime"),
-    ("Drama", "Drama"),
-    ("Família", "Família"),
-    ("Fantasia", "Fantasia"),
-    ("Film_noir", "Film-noir"),
-    ("Histórico", "Histórico"),
-    ("Terror", "Terror"),
-    ("Musical", "Musical"),
-    ("Mistério", "Mistério"),
-    ("Romance", "Romance"),
-    ("Ficção Científica", "Ficção Científica"),
-    ("Esporte", "Esporte"),
-    ("Suspense", "Suspense"),
-    ("Guerra", "Guerra"),
-    ("Western", "Western"),
+    ("açao", "Ação"),
+    ("aventura", "Aventura"),
+    ("animacao", "Animação"),
+    ("biografico", "Biográfico"),
+    ("classicos", "Classicos"),
+    ("comedia", "Comédia"),
+    ("crime", "Crime"),
+    ("drama", "Drama"),
+    ("familia", "Família"),
+    ("fantasia", "Fantasia"),
+    ("filme_noir", "Film-noir"),
+    ("historico", "Histórico"),
+    ("terror", "Terror"),
+    ("musical", "Musical"),
+    ("misterio", "Mistério"),
+    ("romance", "Romance"),
+    ("ficçao_cientifica", "Ficção Científica"),
+    ("esporte", "Esporte"),
+    ("suspense", "Suspense"),
+    ("guerra", "Guerra"),
+    ("western", "Western"),
 ]
 
 
@@ -63,13 +63,13 @@ class Movie(models.Model):
     )
 
     # Other infos
-    publish = models.BooleanField(default=True)
+    publish = models.BooleanField(default=False)
     author = models.ForeignKey('auth.User')
     pub_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     user_rating = 0
 
-    def publish_movie(self):
-        self.publish = True
+    def publish_movie(self, publish=True):
+        self.publish = publish
 
     def __str__(self):
         return self.title

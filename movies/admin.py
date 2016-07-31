@@ -14,8 +14,8 @@ class MovieAdmin(admin.ModelAdmin):
 
         ('Other informations',                {'fields': ['author', 'pub_date', 'publish']}),
     ]
-    list_display = ('title', 'release_year', 'author',)
-    list_filter = ('release_year',)
+    list_display = ('title', 'release_year', 'author', 'publish')
+    list_filter = ('release_year', 'publish')
     search_fields = ['title', 'original_title', 'release_year']
 
 
