@@ -69,7 +69,9 @@ def publish_movie(request, movie_pk):
 
 
 def by_genre(request, genre):
-    for name, url in GENRES:
+    
+    
+    for url, name in GENRES:
         if url == genre:
             genre_title = name
 
@@ -119,4 +121,3 @@ def movie_edit(request, movie_pk):
     else:
         form = MovieForm(instance=movie)
     return render(request, 'movies/movie_edit.html', {'form': form})
-

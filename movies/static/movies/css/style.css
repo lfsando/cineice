@@ -42,11 +42,18 @@ p {
   box-shadow: black 0 10px 10px;
 }
 
-#site-title {  
-  color: #a9bdc7;
-  font-size: 7em;
+.site-title{  
+  font-size: 5em;
   text-align: center;
-  padding: 0.5em 0 0.5em 0;
+  padding: 0.2em 0 0.2em 0;
+}
+
+.site-title a:link, .site-title a:visited {
+  color: #a9bdc7;
+}
+
+.site-tile a:hover {
+  color: #ff7400;
 }
 
 #menu {
@@ -278,12 +285,13 @@ p {
   padding: 2em;
   color: #555555;
   margin: auto;
+  columns: 7;
 }
 
 .genre-item {
   display: inline-block;
   font-family: "Montserrat", "Opens Sans", sans-serif;
-  font-size: 1.2em;
+  font-size: 1em;
   margin-bottom: 1em;
   width: 10em;
 }
@@ -297,18 +305,27 @@ p {
 }
 
 .context-btn {
-  font-family: "Montserrat", "Open Sans", sans-serif;
-  color: #f2f2f2;
+  font-family: "Montserrat", sans-serif;
   border: 2px solid #333333;
   background-color: #222222;
   padding: 1em;
   float: right;
 }
+
+.context-btn a:link, .context-btn a:visited {
+  color: #f2f2f2;
+}
+
 .context-btn:hover {
   background-color: #333333;
 }
+
 .context-btn:hover > a{
   color: #ff7400;
+}
+
+.context-btn:active {
+  background-color: #444444;
 }
 
 /** NEW MOVIE FORM**/

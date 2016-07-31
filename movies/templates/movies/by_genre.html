@@ -8,5 +8,7 @@
       <li class="genre-item"><a href="{% url 'movies:movie_detail' movie_pk=movie.pk %}" >{{ movie.title }}</a></li>
     {% endfor %}
   </ul>
-  <a class="context-btn" href="{% url 'movies:genres_list' %}">Todos os gêneros</a>
+  <div class="context-btn">
+	  <a href="{% url 'movies:genres_list' %}">Todos os gêneros</a>
+  </div>
 {% endblock %}

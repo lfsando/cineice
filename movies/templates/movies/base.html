@@ -16,19 +16,21 @@
 <body>
   <div class="wrapper">
     <header id="main-header">
-      <h1 id="site-title">Cine ICE</h1>
-
+      <h1 class="site-title">
+        <a href="/">Cine ICE</a>
+      </h1>  
       <nav id="menu">
         <div id="buttons-left">
           <a class="menu-button" href="{% url 'movies:movies_list' %}">
             <h2 id="movies-list-button">Filmes</h2>
           </a>
+          <a class="menu-button" href="{% url 'movies:genres_list' %}">
+            <h2 id="gender">Gêneros</h2>
+          </a>
           <a class="menu-button" href={% url 'movies:random' %}>
             <h2 id="random">Aleatório</h2>
           </a>
-          <a class="menu-button" href="{% url 'movies:genres_list' %}">
-            <h2 id="gender">Gênero</h2>
-          </a>
+
 
         </div>
         <div id="buttons-right">

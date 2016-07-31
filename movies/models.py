@@ -6,7 +6,7 @@ import os
 from multiselectfield import MultiSelectField
 
 GENRES = [
-    ("açao", "Ação"),
+    ("acao", "Ação"),
     ("aventura", "Aventura"),
     ("animacao", "Animação"),
     ("biografico", "Biográfico"),
@@ -22,7 +22,7 @@ GENRES = [
     ("musical", "Musical"),
     ("misterio", "Mistério"),
     ("romance", "Romance"),
-    ("ficçao_cientifica", "Ficção Científica"),
+    ("ficcao_cientifica", "Ficção Científica"),
     ("esporte", "Esporte"),
     ("suspense", "Suspense"),
     ("guerra", "Guerra"),
