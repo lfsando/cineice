@@ -20,8 +20,8 @@
     </section>
     <section class="movie-info-section">
       <div class="movie-genres">
-        {% for genre in movie.genre %}
-          <p class="movie-genre"><a href="{% url 'movies:by_genre' genre=genre|lower %}">{{ genre }}</a></p>
+        {% for name, url in genres %}
+          <p class="movie-genre"><a href="{% url 'movies:by_genre' genre=url|lower %}">{{ name|capfirst }}</a></p>
         {% endfor %}
       </div>
 

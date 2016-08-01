@@ -1,0 +1,10 @@
+{% extends 'movies/base.html' %}
+
+{% block content %}
+<section id="logout-wrapper">
+	{% if not user.is_authenticated %}
+		<h2>Saiu com sucesso</h2>
+		<p>e volte sempre... :)</p>	
+	{% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "movies/base.html" %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+	<h2 class="form-title">Você já está logado como {{ user }}</h2>
+{% else %}
+	<section id="new-user">
+		<h2 class="form-title">Registrar novo usuário</h2>
+		<div class="form-container">
+			<form method="POST" id="new-user-forms">{% csrf_token %}
+				{{ form.as_p }}
+				<button type="submit" class="context-btn" id="register-btn">Registrar</button>
+			</form>	
+		</div>
+	</section>
+{% endif %}
+{% endblock %}

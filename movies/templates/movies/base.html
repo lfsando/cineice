@@ -43,15 +43,15 @@
           <a class="menu-button"  href="{% url 'movies:movie_new' %}">
             <h2 id="new_movie">Adicionar Filme</h2>
           </a>
-          <a class="menu-button" href="">
+          <a class="menu-button" href="{% url 'movies:logout' %}">
             <h2 id="menu-login">Sair</h2>
           </a>
 
           {% else %}
-          <a class="menu-button" href="">
+          <a class="menu-button" href="{% url 'movies:login' %}">
             <h2>Entrar</h2>
           </a>
-          <a class="menu-button" href="">
+          <a class="menu-button" href="{% url 'movies:new_user' %}">
             <h2>Registrar</h2>
           </a>
           {% endif %}

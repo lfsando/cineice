@@ -1,0 +1,6 @@
+{%extends 'movies/base.html' %}
+
+{% block content %}
+	<h2 class="user-login-sucess errormessage">Nome de usuário ou senha inválidos.</h2>
+	<a href="{% url 'movies:login' %}" class="context-btn">Voltar para a pagina de login</a>
+{% endblock %}

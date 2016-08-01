@@ -1,0 +1,22 @@
+{% extends 'movies/base.html' %}
+{% load staticfiles %}
+{% block content %}
+	{% if user.is_authenticated %}
+		<h2 class="form-title">Você já está logado como {{ user }}</h2>
+	{% else %}
+		<h2 class="form-title">Entrar</h2>
+		<div class="form-container">
+			<form method="POST" id="login-form" name="login_form">{% csrf_token %}
+				<p>
+					<label for="login-username">Nome do usuário:</label>
+					<input id="login-username" type="text" maxlength="254" name="username">
+				</p>
+				<p>
+					<label for="login-password">Senha:</label>
+					<input id="login-password" type="password" name="password">
+				</p>
+				<button class="context-btn" id="login-btn" type="submit">Entrar</button>
+			</form>
+		</div>
+	{% endif %}
+{% endblock %}

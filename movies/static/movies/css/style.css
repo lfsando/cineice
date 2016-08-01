@@ -310,6 +310,7 @@ p {
   background-color: #222222;
   padding: 1em;
   float: right;
+  color: #f2f2f2;
 }
 
 .context-btn a:link, .context-btn a:visited {
@@ -318,7 +319,10 @@ p {
 
 .context-btn:hover {
   background-color: #333333;
+  color: #ff7400;
+  text-shadow: 1px 1px 1px black;
 }
+
 
 .context-btn:hover > a{
   color: #ff7400;
@@ -330,8 +334,8 @@ p {
   margin-left: 2em;
 }
 
-#form-container {
-  padding: 2em;
+.form-container {
+  padding: 2em 0 0 2em;
 }
 
 .movie-form {
@@ -352,8 +356,10 @@ p {
   padding: 1em 0 0.2em 0;
   display:block;
 }
-
-#new-movie-title{
+#edit-movie-btn {
+  color: #f2f2f2;
+}
+.form-title{
   margin-bottom: 0.2em;
   padding-bottom: 1em;
   border-bottom: 4px solid #f2f2f2;
@@ -456,11 +462,17 @@ p {
   padding: 1em;
   font-size: 0.8em
 }
+
 .letter-wrapper ul {
   columns: 4;
   -webkit-columns: 4;
   -moz-columns: 4;
 }
+
+.letter-wrapper ul li {
+    display: inline-block;
+}
+
 .letter-wrapper h2 {
   text-align: center;
   padding: 1em;
@@ -556,4 +568,73 @@ p {
 #yes-btn:hover {
   background-color: #cc3434;
   text-shadow: 1px 1px 1px black;
+}
+
+/* NEW USER PAGE */
+#new-user-forms {
+
+  width: 100%
+}
+
+#new-user-forms p {
+  width: 100%
+}
+
+#new-user-forms p label {
+  margin-right: 3em;
+  display: block;
+}
+
+.helptext {
+  color: #747d82;
+  margin-left: 2em;
+}
+
+
+#register-btn:hover {
+  color: #ff7400;
+  text-shadow: 1px 1px 1px black
+}
+
+/* LOGIN PAGE */
+#login-form {
+  margin: 0 10em 0 10em;
+}
+#login-form p {
+  margin: 0.5em;
+}
+#login-form p label {
+  font-style: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 1.3em;
+  display: block;
+}
+#login-form p input {
+  border: 1px solid white;
+  height: 1.2em;
+  font-size: 1.2em;
+  font-weight: bold
+}
+
+#login-button:hover {
+  color: #ff7400;
+}
+
+/* LOGIN SUCCESS PAGE */
+.user-login-msg {
+  color: #f2f2f2;
+  text-align: center;
+}
+
+/* LOGOUT PAGE */
+#logout-wrapper {
+  text-align: center;
+}
+#logout-wrapper h2 {
+  font-size: 2em;
+  color: rgb(193, 216, 220);
+}
+#logout-wrapper p {
+  font-size: 1em;
+  font-family: "Montserrat", sans-serif;
 }
