@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^filmes/(?P<movie_pk>\d+)/$', views.movie_detail, name='movie_detail'),
     url(r'^filmes/(?P<movie_pk>\d+)/publicar/$', views.publish_movie, name='publish_movie'),
     url(r'^filmes/(?P<movie_pk>\d+)/editar/$', views.movie_edit, name='movie_edit'),
+    url(r'^filmes/(?P<movie_pk>\d+)/remover/$', views.remove_movie, name='remove_movie'),
     url(r'^filmes/novo/$', views.movie_new, name='movie_new'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -2,6 +2,7 @@
 
 {% block content %}
   <section id="movie-list">
+    {% if movies %}
     <ul>
     {% for index in movie_index %}
       {% if index.1 %}
@@ -21,6 +22,9 @@
         </li>
       {% endif %}
     {% endfor %}
+    {% else %}
+      <h2 class="errormessage">Nenhum filme no banco de dados.</h2>
+    {% endif %}
     </li>
     </ul>
   </section>

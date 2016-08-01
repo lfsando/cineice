@@ -60,8 +60,22 @@
             </a>
           </div>
         {% endif %}
+        <!-- remove button -->
+        <div class="context-btn movie-edit-btn" id="remove-btn">Remover</button>
+        <!--The modal-->
+        <div id="remove-modal" class="modal">
+          <div class="remove-modal-content">
+            <h3 id="remove-modal-question">Tem certeza que deseja remover o filme?</h3>
+            <div id="modal-btns">
+              <a class="modal-btn" id="yes-btn" href="{% url 'movies:remove_movie' movie_pk=movie.pk %}">Sim</a>
+              <p class="modal-btn" id="no-btn">Não</p>     
+            </div>
+          </div>
+        </div>  
+
       </div>
     {% endif %}
     </section>
   </section>
+  <script type="text/javascript" src="{% static 'movies/js/modal.js' %}"></script>
 {% endblock %}

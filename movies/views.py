@@ -16,20 +16,25 @@ class RandomView(generic.DetailView):
 
     def get_object(self):
         movies = Movie.objects.all()
-        movies.exclude(publish=False)
         count = movies.count()
+        movies.exclude(publish=False)
+        has_movies = False
+        for movie in movies:
+            if movie.publish:
+                has_movies = True
 
-        if count > 0:
+        if count > 0 and has_movies:
             movie_ids = [movie.id for movie in movies if movie.publish]
             movie = get_object_or_404(Movie, pk=random.choice(movie_ids))
             return movie
 
 
+
 def movies_list(request):
     movies = Movie.objects.filter(publish=True).order_by('title')
+    movies.exclude(publish=False)
     letters = '#' + ascii_uppercase
     alpha_order = [[letter, []] for letter in letters]
-
     for movie in movies:
         first_letter = movie.title[0]
         if first_letter in list(digits):
@@ -68,6 +73,15 @@ def publish_movie(request, movie_pk):
         return render(request, 'movies/publish.html', {'movie': movie, 'message': message})
 
 
+def remove_movie(request, movie_pk):
+    if request.user.is_superuser:
+        movie = get_object_or_404(Movie, pk=movie_pk)
+        movie.delete()
+        return redirect('movies:movies.views.movies_list')
+    else:
+        return HttpResponse("Você não tem permissão para fazer isso")
+
+
 def by_genre(request, genre):
     
     
@@ -81,11 +95,10 @@ def by_genre(request, genre):
             if movie_genre.lower() == genre.lower():
                 pk = movie.pk
                 movie_list.append(get_object_or_404(Movie, pk=pk))
-    if movie_list:
-        movie_list.sort(key=lambda x: x.title)
-        return render(request, 'movies/by_genre.html', {'movie_list': movie_list, 'genre': genre_title})
-    else:
-        return HttpResponse(content="No movies in {} genre".format(genre), status=404)
+
+    movie_list.sort(key=lambda x: x.title)
+    return render(request, 'movies/by_genre.html', {'movie_list': movie_list, 'genre': genre_title})
+
 
 
 def genres(request):

@@ -3,6 +3,7 @@
 
   <h2 class="genre-title">{{ genre|capfirst }}</h2>
 
+  {% if movie_list %}
   <ul class="genre-list">
     {% for movie in movie_list %}
       <li class="genre-item"><a href="{% url 'movies:movie_detail' movie_pk=movie.pk %}" >{{ movie.title }}</a></li>
@@ -11,4 +12,8 @@
   <div class="context-btn">
 	  <a href="{% url 'movies:genres_list' %}">Todos os gêneros</a>
   </div>
+  {% else %}
+  	<br>
+  	<h2 class="errormessage">Nenhum filme do gênero {{ genre }}</h2>
+  {% endif %}	
 {% endblock %}
